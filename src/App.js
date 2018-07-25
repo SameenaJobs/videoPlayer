@@ -4,7 +4,7 @@ import SearchBar from './components/search';
 import YouTubeSearch from 'youtube-api-search';
 import VideoList from './components/video_list';
 import VideoInfo from './components/video_info';
-const API_KEY = 'AIzaSyDgBmdSoaTmjwKl6yxskbslMG33R1PdtH0';
+const YOUTUBE_API_KEY = 'AIzaSyDgBmdSoaTmjwKl6yxskbslMG33R1PdtH0';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -16,12 +16,10 @@ export default class App extends React.Component {
       selectedVideo: null
     };
     this.handleSearch = this.handleSearch.bind(this);
-    // this.handleSearch();
   }
 
   handleChange = e => {
     this.setState({searchInput: e.target.value});
-    // console.log(this.state.searchInput);
   }
   handleSearch() {
     
@@ -30,7 +28,7 @@ export default class App extends React.Component {
       this.setState({
         isLoaded: true
       });
-      YouTubeSearch({key: API_KEY, term: term}, (data) =>{
+      YouTubeSearch({key: YOUTUBE_API_KEY, term: term}, (data) =>{
         this.setState({
           videos: data,
           selectedVideo : data[0],
